@@ -7,6 +7,7 @@ from .models import Bookmark
 # Create your views here.
 class BookmarkListView(ListView):
     model = Bookmark
+    paginate_by = 3
 
 class BookmarkDetailView(DetailView):
     model = Bookmark
@@ -17,7 +18,7 @@ class BookmarkUpdateView(UpdateView):
     template_name_suffix = '_update'
     success_url = reverse_lazy('list')
 
-class BookmarkDeleteView(DetailView):
+class BookmarkDeleteView(DeleteView):
     model = Bookmark
     fields = ['site_name', 'url']
     success_url = reverse_lazy('list')
